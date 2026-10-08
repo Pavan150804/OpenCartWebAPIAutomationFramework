@@ -16,6 +16,7 @@ reporting-labs.history.json
 
 # env files(confidentials)
 config/.env.*
+!config/.env.example
 
 # build
 dist/
