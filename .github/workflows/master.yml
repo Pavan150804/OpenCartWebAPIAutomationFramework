@@ -16,7 +16,7 @@ on:
           - dev
           - QA
           - stage
-          - Prod
+          - prod
 
 jobs:
 
@@ -331,7 +331,7 @@ jobs:
     name: PROD - Smoke Tests
     needs: deploy-prod
     runs-on: ubuntu-latest
-    environment: Prod
+    environment: prod
     steps:
       - name: Checkout QA repo
         uses: actions/checkout@v4
