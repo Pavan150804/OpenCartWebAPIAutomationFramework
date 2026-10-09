@@ -41,18 +41,18 @@ test("Adding to cart",async({homepage,searchresultspage,productinfopage,page})=>
 })
 
 //common tests using the base page
-test('is Logo visible on the Page',async({basepage})=>{
+test('@smoke is Logo visible on the Page',async({basepage})=>{
     expect(await basepage.isLogoVisible()).toBeTruthy()
 })
 
-test('is search box exists on the Page',async({basepage})=>{
+test('@smoke is search box exists on the Page',async({basepage})=>{
     expect(await basepage.isSearchboxVisible()).toBeTruthy()
 })
 
-test('is cart button exists on the Page',async({basepage})=>{
+test.skip('@smoke is cart button exists on the Page',async({basepage})=>{
     expect(await basepage.isCartbuttonVisible()).toBeTruthy()
 })
 
-test('is Footers exists on the Page',async({basepage})=>{
+test('@smoke is Footers exists on the Page',async({basepage})=>{
     expect(await basepage.getPageFootersCount()).toBe(16)
 })

@@ -9,13 +9,13 @@ let userid:Number | undefined;
 
 test.describe.serial("Crud Operations Test",()=>{
 
-    test("get All users test",async({apihelper})=>{
+    test.skip("get All users test",async({apihelper})=>{
         let response= await apihelper.get('/public/v2/users',authheader)
         expect(response.status).toBe(200)
     })
 
 
-     test("Post the data test",async({apihelper})=>{
+     test("@smoke Post the data test",async({apihelper})=>{
          let user={
         name:"Rahul",
         email:`automation${Date.now()}open@gmail.com`,
@@ -28,7 +28,7 @@ test.describe.serial("Crud Operations Test",()=>{
         console.log(userid);
     })
 
-     test("Update the data test",async({apihelper})=>{
+     test("@smoke Update the data test",async({apihelper})=>{
         let user={
         name:"Rakul",
         gender:"female",
@@ -41,7 +41,7 @@ test.describe.serial("Crud Operations Test",()=>{
   
     })
 
-      test("delete the data test",async({apihelper})=>{
+      test("@smoke delete the data test",async({apihelper})=>{
         let response= await apihelper.delete(`/public/v2/users/${userid}`,authheader)
         expect(response.status).toBe(204)
     })

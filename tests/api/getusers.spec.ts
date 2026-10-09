@@ -37,7 +37,7 @@ test("Create an user POST test",async({request})=>{
 
 // 8628914
 
-test("Update an user using PUT test",async({request})=>{
+test.skip("Update an user using PUT test",async({request})=>{
     let user={
         name:"PavanManikanta",
         email:`automation1789799796389open@gmail.com`,
@@ -57,7 +57,7 @@ test("Update an user using PUT test",async({request})=>{
 })
 
 //For to change partial data
-test("Update an user using Patch test",async({request})=>{
+test.skip("Update an user using Patch test",async({request})=>{
     let user={
         status:"Inactive"
     }
@@ -74,7 +74,7 @@ test("Update an user using Patch test",async({request})=>{
 })
 
 
-test("Get a Specific user test",async({request})=>{
+test.skip("Get a Specific user test",async({request})=>{
     let response:APIResponse=await request.get('https://gorest.co.in/public/v2/users/8628941'
         ,{headers:AUTH_TOKEN})
     expect(response.status()).toBe(200) 

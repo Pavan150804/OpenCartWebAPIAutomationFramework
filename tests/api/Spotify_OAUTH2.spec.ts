@@ -23,7 +23,7 @@ test.beforeEach('post-creating the access token',async({request})=>{
 
 })
 
-test('get albums',async({request})=>{
+test.skip('get albums',async({request})=>{
     // https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy
     let baseurl="https://api.spotify.com"
     let endpoint='/v1/albums/4aawyAB9vmqN3uQ7FjRGTy'

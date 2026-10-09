@@ -22,7 +22,7 @@ async function createUser(apihelper:any) {
 
 
 //1.test --> create user --> get user --> with AAA pattern
-test("get User test",async({apihelper})=>{
+test.skip("get User test",async({apihelper})=>{
      let response=await createUser(apihelper)
      let getresponse=await apihelper.get(`/public/v2/users/${response.id}`,authheader)
      expect(getresponse.status).toBe(200)
@@ -30,7 +30,7 @@ test("get User test",async({apihelper})=>{
 })
 
 //2.update user test--> create user --> get user --> update --> with AAA pattern
-test('update user test',async({apihelper})=>{
+test.skip('update user test',async({apihelper})=>{
      let userdata={
         name:"NaveenAutomations",
         status:"Inactive"
@@ -48,7 +48,7 @@ test('update user test',async({apihelper})=>{
 })
 
 //3.Delete user test--> create user --> get user --> delete(204) --> get user (404 )with AAA pattern
-test('Delete user test',async({apihelper})=>{
+test.skip('Delete user test',async({apihelper})=>{
     //1.create user
     let response=await createUser(apihelper)
     

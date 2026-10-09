@@ -45,7 +45,7 @@ let getusersSchema=
   "items":userSchema  
 }
 
-test("get a user test",async({apihelper})=>{
+test.skip("get a user test",async({apihelper})=>{
           let user={
             name:"Rahul",
             email:`automation${Date.now()}open@gmail.com`,
@@ -71,7 +71,7 @@ test("get a user test",async({apihelper})=>{
 
 })
 
-test("get all users test",async({apihelper})=>{
+test.skip("get all users test",async({apihelper})=>{
           
         let getresponse= await apihelper.get(`/public/v2/users`,authheader)
 

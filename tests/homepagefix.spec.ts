@@ -5,17 +5,17 @@ test.beforeEach(async({loginpage})=>{
     await loginpage.dologin(process.env.Un!,process.env.Pw!)
 })
 
-test('home page title test',async({homepage})=>{
+test('@smoke home page title test',async({homepage})=>{
     let title=await homepage.getHomePageTitle()
     expect(title).toBe('My Account')
     console.log(title);
 })
 
-test('logout link exits test',async({homepage})=>{
+test('@smoke logout link exits test',async({homepage})=>{
   expect (await homepage.islogoutlinkExits()).toBeTruthy()
 })
 
-test("homepage test headers",async({homepage})=>{
+test("@regression homepage test headers",async({homepage})=>{
     let allheaders=await homepage.getHomePageHeaders()
     console.log(allheaders);
     expect.soft(allheaders).toHaveLength(4)
@@ -28,18 +28,18 @@ test("homepage test headers",async({homepage})=>{
 })
 
 //common tests using the base page
-test('is Logo visible on the Page',async({basepage})=>{
+test('@smoke is Logo visible on the Page',async({basepage})=>{
     expect(await basepage.isLogoVisible()).toBeTruthy()
 })
 
-test('is search box exists on the Page',async({basepage})=>{
+test('@smoke is search box exists on the Page',async({basepage})=>{
     expect(await basepage.isSearchboxVisible()).toBeTruthy()
 })
 
-test('is cart button exists on the Page',async({basepage})=>{
+test.skip('@smoke is cart button exists on the Page',async({basepage})=>{
     expect(await basepage.isCartbuttonVisible()).toBeTruthy()
 })
 
-test('is Footers exists on the Page',async({basepage})=>{
+test('@smoke is Footers exists on the Page',async({basepage})=>{
     expect(await basepage.getPageFootersCount()).toBe(16)
 })

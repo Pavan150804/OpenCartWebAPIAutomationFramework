@@ -2,7 +2,7 @@ import  {test,expect} from "@playwright/test"
 
 //webapp --> intercept the network calls and log them
 //**/* --> wildcard pattern for urls
-test('intercept test',async({page})=>{
+test('@regression intercept test',async({page})=>{
     await page.route('**/*',async(route)=>{
         console.log(route.request().method()," : ",route.request().url());
         await route.continue()
@@ -41,7 +41,7 @@ test('mocking test with fake json response',async({page})=>{
 
 })
 
-test('mocking test with fake html ',async({page})=>{
+test('@regression mocking test with fake html ',async({page})=>{
     
     // https://naveenautomationlabs.com/opencart/index.php?route=product/search&search=macbook
     await page.route('**/*search=macbook',async(route)=>{

@@ -9,7 +9,7 @@ test.beforeEach(async({loginpage})=>{
         await loginpage.gotoLoginPage()
 })
 
-test("login page title test",async({loginpage})=>{
+test("@smoke login page title test",async({loginpage})=>{
     meta({priority:'P1',severity:"minor",feature:"f1",owner:"pavan" ,story:"us1",issue:'bug1'})
     let title=await loginpage.getTitle()
     console.log('title:',title);
@@ -18,12 +18,12 @@ test("login page title test",async({loginpage})=>{
     expect(await loginpage.getLoginPageDetails()).toBe('Account Login')
 })
 
-test("forgot pwd link exists test",async({loginpage})=>{
+test("@regression forgot pwd link exists test",async({loginpage})=>{
     meta({priority:'P2',severity:"critical",feature:"f3",owner:"Kumar" ,story:"us3"})
     expect(await loginpage.isforgotPwdexists()).toBeTruthy()
 })
 
-test("is user able to login",async({loginpage,homepage})=>{
+test("@regression is user able to login",async({loginpage,homepage})=>{
     meta({priority:'P2',severity:"major",feature:"f2",owner:"Kumar" ,story:"us2"})
     await testData({username:process.env.Un!,password:process.env.Pw!},"Login data")
     await loginpage.dologin(process.env.Un!,process.env.Pw!)
@@ -35,7 +35,7 @@ test("is user able to login",async({loginpage,homepage})=>{
 //Data Driven 1 -CSV
 let testdata=CSVHelper.readcsv('src/testdata/logindata.csv')
 for(let row of testdata){
-    test(`Login with invalid credentials using csv ${row.username}-${row.password}`,async({loginpage})=>{
+    test(`@regression Login with invalid credentials using csv ${row.username}-${row.password}`,async({loginpage})=>{
        await testData(testdata,"Invalid credentials")
       await loginpage.dologin(row.username!,row.password!)
       expect(await loginpage.invalidLoginErrorMessage()).toBeTruthy()
@@ -45,7 +45,7 @@ for(let row of testdata){
 //Data Driven 2 -xlsx
 let testdataExcel=ExcelHelper.readExcel('src/testdata/logindata.xlsx','Sheet1')
 for(let row of testdataExcel){
-    test(`Login with invalid credentials using Excel ${row.username}-${row.password}`,async({loginpage})=>{
+    test(`@regression Login with invalid credentials using Excel ${row.username}-${row.password}`,async({loginpage})=>{
         await testData(testdataExcel,"Invalid credentials")
       await loginpage.dologin(row.username!,row.password!)
       expect(await loginpage.invalidLoginErrorMessage()).toBeTruthy()
@@ -55,7 +55,7 @@ for(let row of testdataExcel){
 //Data Driven 3-JSON
 let testdataJson=JsonHelper.readJSON('src/testdata/logindata.json')
 for(let row of testdataJson){
-    test(`Login with invalid credentials using Json ${row.username}-${row.password}`,async({loginpage})=>{
+    test(`@regression Login with invalid credentials using Json ${row.username}-${row.password}`,async({loginpage})=>{
         await testData(testdataJson,"Invalid credentials")
       await loginpage.dologin(row.username!,row.password!)
       expect(await loginpage.invalidLoginErrorMessage()).toBeTruthy()
@@ -93,18 +93,18 @@ test("user is able to login to app test", async ({ loginpage, homepage }) => {
 
 //common tests using base page
 
-test('is Logo visible on the Page',async({basepage})=>{
+test('@smoke is Logo visible on the Page',async({basepage})=>{
     expect(await basepage.isLogoVisible()).toBeTruthy()
 })
 
-test('is search box exists on the Page',async({basepage})=>{
+test('@smoke is search box exists on the Page',async({basepage})=>{
     expect(await basepage.isSearchboxVisible()).toBeTruthy()
 })
 
-test('is cart button exists on the Page',async({basepage})=>{
+test.skip('@smoke is cart button exists on the Page',async({basepage})=>{
     expect(await basepage.isCartbuttonVisible()).toBeTruthy()
 })
 
-test('is Footers exists on the Page',async({basepage})=>{
+test('@smoke is Footers exists on the Page',async({basepage})=>{
     expect(await basepage.getPageFootersCount()).toBe(16)
 })

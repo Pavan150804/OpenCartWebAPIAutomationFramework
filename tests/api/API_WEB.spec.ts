@@ -19,7 +19,7 @@ test.beforeAll('To create the Bearer Token',async({request})=>{
     console.log(accesstoken);
 })
 
-test("WEB and API test",async({page,request})=>{
+test("@regression WEB and API test",async({page,request})=>{
  
    let postresponse=await request.post('https://thinking-tester-contact-list.herokuapp.com/contacts',{
         headers:{

@@ -21,7 +21,7 @@ test.beforeAll('create a token post',async({request})=>{
     console.log('access token: ',accesstoken);
 })
 
-test('booking crud',async({request})=>{
+test('@regression booking crud',async({request})=>{
     //1.post-create a booking-no token  needed
 
    let bookingresponse=await request.post('https://restful-booker.herokuapp.com/booking',{
