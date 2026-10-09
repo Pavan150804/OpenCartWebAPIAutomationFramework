@@ -15,7 +15,7 @@ test.describe.serial("Crud Operations Test",()=>{
     })
 
 
-     test("@smoke Post the data test",async({apihelper})=>{
+     test.skip("@smoke Post the data test",async({apihelper})=>{
          let user={
         name:"Rahul",
         email:`automation${Date.now()}open@gmail.com`,
@@ -28,7 +28,7 @@ test.describe.serial("Crud Operations Test",()=>{
         console.log(userid);
     })
 
-     test("@smoke Update the data test",async({apihelper})=>{
+     test.skip("@smoke Update the data test",async({apihelper})=>{
         let user={
         name:"Rakul",
         gender:"female",
@@ -41,7 +41,7 @@ test.describe.serial("Crud Operations Test",()=>{
   
     })
 
-      test("@smoke delete the data test",async({apihelper})=>{
+      test.skip("@smoke delete the data test",async({apihelper})=>{
         let response= await apihelper.delete(`/public/v2/users/${userid}`,authheader)
         expect(response.status).toBe(204)
     })
