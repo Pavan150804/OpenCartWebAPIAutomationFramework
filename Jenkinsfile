@@ -259,7 +259,7 @@ pipeline {
   
                     script {
                       def allureHome = tool 'Allure'
-                      bat "\"${allureHome}\\bin\\allure.bat\" generate qa-tests/allure-results --clean -o reports-qa/allure"
+                      bat "\"${allureHome}\\bin\\allure.bat\" generate qa-tests/allure-results --clean -o reports-dev/allure"
                     }
                     powershell 'if (Test-Path qa-tests/reporting-labs) { Copy-Item qa-tests/reporting-labs/* reports-dev/reportinglabs/ -Recurse -Force }'
 
