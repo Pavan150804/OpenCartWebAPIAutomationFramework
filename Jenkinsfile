@@ -166,7 +166,7 @@ pipeline {
 
                     bat 'npm ci'
 
-                    bat 'npx playwright install'
+                    bat 'npx playwright install chromium'
 
                 }
 
