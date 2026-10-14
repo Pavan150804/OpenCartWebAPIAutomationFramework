@@ -256,9 +256,11 @@ pipeline {
                     powershell 'New-Item -ItemType Directory -Force reports-dev/html,reports-dev/allure,reports-dev/reportinglabs | Out-Null'
 
                     powershell 'if (Test-Path qa-tests/reports/html-report) { Copy-Item qa-tests/reports/html-report/* reports-dev/html/ -Recurse -Force }'
-
-                    bat 'allure generate qa-tests/allure-results --clean -o reports-dev/allure'
-
+  
+                    script {
+                      def allureHome = tool 'Allure'
+                      bat "\"${allureHome}\\bin\\allure.bat\" generate qa-tests/allure-results --clean -o reports-qa/allure"
+                    }
                     powershell 'if (Test-Path qa-tests/reporting-labs) { Copy-Item qa-tests/reporting-labs/* reports-dev/reportinglabs/ -Recurse -Force }'
 
                     publishHTML(target: [
@@ -392,7 +394,10 @@ pipeline {
 
                     powershell 'if (Test-Path qa-tests/reports/html-report) { Copy-Item qa-tests/reports/html-report/* reports-qa/html/ -Recurse -Force }'
 
-                    bat 'allure generate qa-tests/allure-results --clean -o reports-qa/allure'
+                    script {
+                      def allureHome = tool 'Allure'
+                      bat "\"${allureHome}\\bin\\allure.bat\" generate qa-tests/allure-results --clean -o reports-qa/allure"
+                    }
 
                     powershell 'if (Test-Path qa-tests/reporting-labs) { Copy-Item qa-tests/reporting-labs/* reports-qa/reportinglabs/ -Recurse -Force }'
 
@@ -527,7 +532,10 @@ pipeline {
 
                     powershell 'if (Test-Path qa-tests/reports/html-report) { Copy-Item qa-tests/reports/html-report/* reports-stage/html/ -Recurse -Force }'
 
-                    bat 'allure generate qa-tests/allure-results --clean -o reports-stage/allure'
+                    script {
+                      def allureHome = tool 'Allure'
+                      bat "\"${allureHome}\\bin\\allure.bat\" generate qa-tests/allure-results --clean -o reports-qa/allure"
+                    }
 
                     powershell 'if (Test-Path qa-tests/reporting-labs) { Copy-Item qa-tests/reporting-labs/* reports-stage/reportinglabs/ -Recurse -Force }'
 
@@ -694,8 +702,10 @@ pipeline {
 
                     powershell 'if (Test-Path qa-tests/reports/html-report) { Copy-Item qa-tests/reports/html-report/* reports-prod/html/ -Recurse -Force }'
 
-                    bat 'allure generate qa-tests/allure-results --clean -o reports-prod/allure'
-
+                    script {
+                      def allureHome = tool 'Allure'
+                      bat "\"${allureHome}\\bin\\allure.bat\" generate qa-tests/allure-results --clean -o reports-qa/allure"
+                    }
                     powershell 'if (Test-Path qa-tests/reporting-labs) { Copy-Item qa-tests/reporting-labs/* reports-prod/reportinglabs/ -Recurse -Force }'
 
                     publishHTML(target: [
